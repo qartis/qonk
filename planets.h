@@ -9,7 +9,7 @@
 #include "selection.h"
 #include "actions.h"
 #include "config.h"
-#include <SDL.h>
+#include "SDL.h"
 #include <sstream>
 #include <list>
 using namespace std;
@@ -22,6 +22,7 @@ class Universe;
 
 class Planet {
 private:
+public:
 	Universe* universe;
 	Player* owner;
 	int rotationSpeed, rotationOffset;
@@ -32,7 +33,7 @@ private:
 	Planet* mother;
 	list< Ship* > residentShips;
 	Uint32 buildStartTime, buildEndTime;
-public:
+
 	Planet(); // make a planet
 	void makeMoon( Planet* );
 	Coordinate getVector( Uint32 time ) const;
@@ -44,7 +45,7 @@ public:
 	void removeResident( Ship* ship );
 	
 	void render( SDL_Surface* screen ) const;
-	void renderOrbit( SDL_Surface* screen ) const;
+	//void renderOrbit( SDL_Surface* screen ) const;
 	void renderSelector( SDL_Surface* screen ) const;
 	void renderBuildProgress( SDL_Surface* screen ) const;
 	
@@ -68,7 +69,7 @@ public:
 	void addMoons( int numberOfMoons );
 
 	void render( SDL_Surface* screen ) const;
-	void renderOrbits( SDL_Surface* screen ) const;
+	//void renderOrbits( SDL_Surface* screen ) const;
 	
 	Planet* closestToCoordinate( const Coordinate& c );
 	Planet* closestToCoordinate( const Coordinate& c, double treshold );

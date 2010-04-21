@@ -5,7 +5,7 @@
 
 #include "SDL_gfxPrimitives.h"
 #include "coordinate.h"
-#include <SDL.h>
+#include "SDL.h"
 #include <vector>
 #include <stdlib.h>
 

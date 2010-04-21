@@ -7,10 +7,11 @@ using namespace std;
 Settings::Settings() {
   setResolution( 640,480 );
   setFullscreen( false );
+//  setResolution( 1280,1024 );
+//  setFullscreen( true );
 }
 
-void
-Settings::setResolution( int width, int height ) {
+void Settings::setResolution( int width, int height ) {
   screenWidth = width;
   screenHeight = height;
   gameWidth = height;
@@ -18,8 +19,7 @@ Settings::setResolution( int width, int height ) {
   gameOffsetX = ( width - height ) / 2;
 }
 
-void
-Settings::setFullscreen( bool b ) {
+void Settings::setFullscreen( bool b ) {
   fullscreen = b;
 }
 

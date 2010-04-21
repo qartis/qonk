@@ -130,8 +130,7 @@ Planet::render( SDL_Surface* screen ) const {
 		renderSelector( screen );
 }
 
-void
-Planet::renderOrbit( SDL_Surface* screen ) const {
+/* void Planet::renderOrbit( SDL_Surface* screen ) const {
 	Coordinate centerLocation;
 	if( isAMoon ) {
 		centerLocation = mother->getLocation();
@@ -144,7 +143,7 @@ Planet::renderOrbit( SDL_Surface* screen ) const {
 	if( getMoon() ) {
 		mother->renderOrbit( screen );
 	}
-}
+} */
 
 void
 Planet::renderSelector( SDL_Surface* screen ) const {
@@ -253,20 +252,18 @@ void Planets::addMoons( int numberOfMoons ) {
 	
 }
 
-void 
-Planets::render( SDL_Surface* screen ) const {
+void Planets::render( SDL_Surface* screen ) const {
 	for( const_iterator i = begin(); i != end(); i++ )
 		i->render( screen );
 }
 
-void 
-Planets::renderOrbits( SDL_Surface* screen ) const {
+/*
+void Planets::renderOrbits( SDL_Surface* screen ) const {
 	for( const_iterator i = begin(); i != end(); i++ )
 		i->renderOrbit( screen );
-}
+}*/
 
-Planet*
-Planets::closestToCoordinate( const Coordinate& c ) {
+Planet* Planets::closestToCoordinate( const Coordinate& c ) {
 	double closestDistance = 5000;
 	Planet* closestPlanet = NULL;
 	for( iterator i = begin(); i != end(); i++ ) {
@@ -279,8 +276,7 @@ Planets::closestToCoordinate( const Coordinate& c ) {
 	return closestPlanet;
 }
 
-Planet*
-Planets::closestToCoordinate( const Coordinate& c, double treshold ) {
+Planet* Planets::closestToCoordinate( const Coordinate& c, double treshold ) {
 	Planet* closest = closestToCoordinate( c );
 	if( closest->getLocation().distance( c ) < treshold )
 		return closest;
@@ -370,8 +366,7 @@ Planets::getRandomNearbyPlanet( Planet* planet ) {
 
 // ##### CREATESHIPACTION #####
 
-CreateShipAction::CreateShipAction() :
-Action::Action() {
+CreateShipAction::CreateShipAction() : Action() {
 	actionID = 1;
 }
 

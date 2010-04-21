@@ -3,7 +3,7 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-#include <SDL.h>
+#include "SDL.h"
 #include <iostream>
 #include <string>
 #include <sstream>

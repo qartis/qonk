@@ -35,12 +35,6 @@ Message::Message( string message, Uint32 color ) {
 }
 
 void Message::render( SDL_Surface* screen, int &x, int &y, Font* font, unsigned int time ) {
-    /*if (time < 0){
-        return;
-    }*/
-
-    // default parameters for showing a message
-
     int dx = font->getHeight();
     int alpha = 255;
 
@@ -73,7 +67,7 @@ Uint32 Message::getDisplayTime() {
 }
 
 Messages::Messages() {
-  font = new Font( "font.ttf", 12 );
+  font = new Font( "bold.ttf", 18 );
 }
 
 Messages::~Messages() {
@@ -82,6 +76,10 @@ Messages::~Messages() {
 
 void Messages::addMessage( Uint32 time, Message m ) {
   insert( pair< Uint32, Message>( time, m ) );
+}
+
+void Messages::addMessage( Message m ) {
+  insert( pair< Uint32, Message>( timer.getTime() + 200, m ) );
 }
 
 void Messages::cleanup() {

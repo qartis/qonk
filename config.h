@@ -6,6 +6,7 @@
 #define PI 3.14159265
 
 #include "timer.h"
+#include "debug.h"
 
 static Timer timer;
 extern bool is_server;

@@ -1,17 +1,25 @@
 CXX=g++
-CFLAGS=`sdl-config --cflags` -O3 -Wall -Wextra -fmessage-length=0 -funsigned-char -funsigned-bitfields -Werror -Wall -Wextra -Wwrite-strings -Winit-self -Wcast-align -Wcast-qual -Wpointer-arith -Wstrict-aliasing -Wformat=2 -Wmissing-include-dirs -Wno-unused-parameter -Wuninitialized -Wno-error=unused-variable -Wformat-security
-#CFLAGS=`sdl-config --cflags` -O3 -Wall -Wextra 
+CFLAGS=`sdl-config --cflags` -Os -Wall -Wextra -fmessage-length=0 -Winit-self -Wcast-align -Wcast-qual -Wpointer-arith -Wstrict-aliasing -Wformat=2 -Wmissing-include-dirs -Wno-unused-parameter -Wuninitialized -Wno-error=unused-variable -Wformat-security -Wno-write-strings -g
 LIBS=`sdl-config --libs` -lSDL_ttf -lSDL_net
-OBJECTS=SDL_gfxPrimitives.o extensions.o coordinate.o stars.o planets.o selection.o ships.o main.o actions.o players.o universe.o animations.o fonts.o messages.o timer.o config.o network.o
+
+C_SRC = $(shell ls -t *.c)
+CPP_SRC = $(shell ls -t *.cpp)
+OBJ = $(C_SRC:%.c=%.o) $(CPP_SRC:%.cpp=%.o)
 
 all: qonk
 
-qonk: $(OBJECTS)
-	$(CXX) $(CFLAGS) $(LIBS) $(OBJECTS) -o qonk
-	@cp qonk server
+qonk: $(OBJ)
+	$(CXX) $(CFLAGS) $(LIBS) $(OBJ) -o qonk
 
-.cpp.o:
-	$(CXX) $(CFLAGS) -c $<
+%.o : %.cpp %.h
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+%.o : %.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -vf *.o *~ qonk screenshot.bmp DEADJOE
+	@rm -vf $(OBJ) screenshot.bmp /tmp/.obj/qonk

@@ -56,10 +56,11 @@ void Universe::renderBackground( SDL_Surface* screen ) {
 
 	if( !( mouseState & SDL_BUTTON(1) ) ) {
 
+        /*
 		if( closestPlanet != NULL ) {
 			closestPlanet->renderOrbit( screen );
 		}
-		
+		*/
 		currentSelectedPlanet = closestPlanet;
 			
 	}

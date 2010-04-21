@@ -133,3 +133,12 @@ Uint8 getBlue( Uint32 color ) {
 	return color & 0x0000FF;
 }
 
+void __dbg(const char *function, int lineno, const char *fmt, ...){
+    va_list ap;
+
+    fprintf(stderr, "%s():%-3d  ", function, lineno);
+    va_start(ap, fmt);
+    vfprintf(stderr, fmt, ap);
+    va_end(ap);
+    fprintf(stderr,"\n");
+}

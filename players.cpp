@@ -16,19 +16,16 @@ Player::Player() {
 }
 
 Player::Player( Universe* universe, Planet* homePlanet, int numberOfShips, Uint32 color ) {
-
   ships = new Ships();
   playerState = ALIVE;
   this->universe = universe;
   addShips( homePlanet, numberOfShips );
   setColor( color );
-		
 }
 
 void Player::addShips( Planet* planet, int numberOfShips ) {
     for(int i = 0; i < numberOfShips; i++){
         ships->push_back( new Ship( this, planet ) );
-        cout << "making ship" << endl;
     }
 }
 
@@ -75,34 +72,30 @@ Player::renderStatsLog( SDL_Surface* screen ) {
   }
 }
 
-double
-Player::getPoints() {
-  double result = 0;
-  for( Planets::iterator i = universe->planets->begin(); i != universe->planets->end(); i++ ) {
-    if( i->getOwner() == this ) {
-      if( i->getMoon() ) { 
-        result += 0.999;
-      } else {
-        result += 2;
-      }
+double Player::getPoints() {
+    double result = 0;
+    for( Planets::iterator i = universe->planets->begin(); i != universe->planets->end(); i++ ) {
+        if( i->getOwner() == this ) {
+            if( i->getMoon() ) { 
+                result += 0.999;
+            } else {
+                result += 2;
+            }
+        }
     }
-  }
-  result += ships->size() / 3.0;
-  return result;
+    result += ships->size() / 3.0;
+    return result;
 }
 
-Player::PlayerTypes
-Player::getPlayerType() {
+Player::PlayerTypes Player::getPlayerType() {
   return playerType;
 }
 
-void
-Player::setColor( const Uint32& color ) {
+void Player::setColor( const Uint32& color ) {
   this->color = color;
 }
 
-Uint32
-Player::getColor() {
+Uint32 Player::getColor() {
   return color;
 }
 

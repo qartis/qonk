@@ -4,7 +4,7 @@
 #define EXTENSIONS_H
 
 #include "config.h"
-#include <SDL.h>
+#include "SDL.h"
 #include <sstream>
 using namespace std;
 

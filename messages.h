@@ -32,6 +32,7 @@ public:
   Messages();
   ~Messages();
   void addMessage( Uint32 time, Message m );
+  void addMessage( Message m );
   void cleanup();
   void render( SDL_Surface* screen );
   Font* getFont() { return font; }
